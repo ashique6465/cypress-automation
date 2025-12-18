@@ -1,70 +1,79 @@
-# Cypress Automation Project (UI + API)
+# Cypress UI and API Automation Framework
  
-This project demonstrates end-to-end UI automation and REST API automation
-using Cypress.
+This repository contains an end-to-end automation framework built using Cypress.  
+The framework covers both UI automation and REST API automation and follows real-world automation best practices such as Page Object Model (POM), fixture-based test data, and CI/CD integration using GitHub Actions.
  
-UI Automation:
-- Login
-- Inventory
-- Add to Cart
-- Checkout
- 
-API Automation:
-- GET, POST, PUT, DELETE
-- Positive & negative scenarios
-- Data-driven testing using fixtures
-
-## Tech Stack
+Tech Stack:
 - Cypress
 - JavaScript
 - Node.js
-- REST API
-- GitHub Codespaces
-
-
-## How to Run the Project
+- REST API Testing
+- GitHub Actions (CI/CD)
  
-### 1. Install dependencies
-npm install
- 
-### 2. Run all tests (UI + API)
-npx cypress run
- 
-### 3. Run UI tests only
-npx cypress run --spec cypress/e2e/login.cy.js
- 
-### 4. Run API tests only
-npx cypress run --spec cypress/e2e/api/users_crud.cy.js
- 
-### 5. Open Cypress Test Runner (if supported)
-npx cypress open
-
-## Folder Structure
- 
-cypress/
-├── e2e/
-│   ├── login.cy.js
-│   ├── api/
-│   │   └── users_crud.cy.js
-├── fixtures/
-│   └── LoginData.json
-├── pages/
-│   ├── LoginPage.js
-│   ├── InventoryPage.js
-│   └── CheckoutPage.js
-
-
-## Test Coverage
- 
-UI Tests:
-- Valid login
-- Invalid login
+UI Automation Coverage (SauceDemo):
+- Login with valid credentials
+- Login with invalid credentials
+- Inventory page validation
 - Add product to cart
+- Cart count verification
 - Checkout flow
+- Order confirmation validation
  
-API Tests:
+API Automation Coverage:
 - GET users
 - POST create user
 - PUT update user
 - DELETE user
-- Negative scenarios (401 / 404 / 400)
+- Status code validation
+- Response body validation
+- Negative API scenarios
+ 
+Project Structure:
+cypress/
+├── e2e/
+│   ├── login.cy.js
+│   ├── users_api.cy.js
+│   └── users_crud.cy.js
+├── pages/
+│   ├── LoginPage.js
+│   ├── InventoryPage.js
+│   └── CheckoutPage.js
+├── fixtures/
+│   ├── LoginData.json
+│   ├── users.json
+│   └── updateUser.json
+└── screenshots/
+.github/
+└── workflows/
+     └── cypress.yml
+ 
+How to Run the Project:
+ 
+1. Clone the repository
+git clone <repository-url>
+cd <repository-folder>
+ 
+2. Install dependencies
+npm install
+ 
+3. Run all tests (UI + API) in headless mode
+npx cypress run
+ 
+4. Run Cypress in interactive mode
+npx cypress open
+ 
+5. Run a specific test file
+npx cypress run --spec cypress/e2e/login.cy.js
+ 
+Continuous Integration:
+This project is integrated with GitHub Actions.  
+On every push or pull request to the main branch, Cypress tests are automatically executed in headless mode.  
+The CI pipeline installs dependencies, installs the Cypress binary, and runs all UI and API tests.
+ 
+Key Highlights:
+- Page Object Model for UI automation
+- Data-driven testing using Cypress fixtures
+- REST API CRUD automation using cy.request()
+- Negative API testing
+- GitHub Actions CI pipeline
+- Node and Cypress compatibility handling
